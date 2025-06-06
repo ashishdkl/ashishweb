@@ -1,60 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!--Created by Tivotal-->
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ashish Dhakal</title>
-    <meta content="Hi, It's me Ashish Dhakal. I am a permanenet residence of Aandhikhol 1 Syangja , Nepal. I am currently pursuing Bachelor of computer application Course at Oxford college of engineering and management. As a Computer Science Student I am always learning new technologies and enhanching my knowledge." name="description">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashish Dhakal - Developer Terminal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="font-mono bg-black text-green-400">
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <section id="home" class="mb-12">
+            <div class="border-l-4 border-green-400 pl-4">
+                <p class="text-lg">$ whoami</p>
+                <p class="text-3xl font-bold mt-2">Ashish Dhakal</p>
+                <p class="text-lg mt-1">Laravel Developer & Graphics Designer</p>
+                <p class="text-sm mt-2">$ date</p>
+                <p>Fri Jun  6 22:01:00 NPT 2025</p>
+            </div>
+        </section>
 
-    <link rel="stylesheet" href="style.css">
+        <!-- Skills Section -->
+        <section id="skills" class="mb-12">
+            <div class="border-l-4 border-green-400 pl-4">
+                <p class="text-lg">$ cat skills.txt</p>
+                <div class="mt-4">
+                    <p>Laravel, C, C++, VB.NET, Graphics Design</p>
+                </div>
+            </div>
+        </section>
 
-    <!--font awesome-->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
+        <!-- What I Do Section -->
+        <section id="what-i-do" class="mb-12">
+            <div class="border-l-4 border-green-400 pl-4">
+                <p class="text-lg">$ cat services.txt</p>
+                <div class="mt-4 space-y-4">
+                    <div>
+                        <p class="font-bold">[1] Web Development</p>
+                        <p>Building robust web applications using Laravel and modern frameworks.</p>
+                    </div>
+                    <div>
+                        <p class="font-bold">[2] Software Development</p>
+                        <p>Creating applications with C, C++, and VB.NET for various needs.</p>
+                    </div>
+                    <div>
+                        <p class="font-bold">[3] Graphics Design</p>
+                        <p>Designing visually appealing graphics for websites and branding.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!--css file-->
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="hero">
-      <nav>
-        <img src="logo.png.png" alt="" class="logo" />
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="mb-12">
+            <div class="border-l-4 border-green-400 pl-4">
+                <p class="text-lg">$ ls projects/</p>
+                <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <p class="font-bold">laravel_app</p>
+                        <p>A custom Laravel-based web application for a client.</p>
+                    </div>
+                    <div>
+                        <p class="font-bold">c_project</p>
+                        <p>A utility tool developed in C for system optimization.</p>
+                    </div>
+                    <div>
+                        <p class="font-bold">graphic_design</p>
+                        <p>A branding project with logos and promotional materials.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
+        <!-- Blog Section -->
+        <section id="blog" class="mb-12">
+            <div class="border-l-4 border-green-400 pl-4">
+                <p class="text-lg">$ cat blog.txt</p>
+                <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <p class="font-bold">[2025-06-01] Laravel Best Practices</p>
+                        <p>Tips for optimizing Laravel applications.</p>
+                    </div>
+                    <div>
+                        <p class="font-bold">[2025-05-15] C Programming Basics</p>
+                        <p>Fundamentals of C for beginners.</p>
+                    </div>
+                    <div>
+                        <p class="font-bold">[2025-04-10] Design Trends 2025</p>
+                        <p>Latest trends in graphic design this year.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <a href="#" class="btn">Hire Me</a>
-      </nav>
+        <!-- Contact Section -->
+        <section id="contact" class="mb-12">
+            <div class="border-l-4 border-green-400 pl-4">
+                <p class="text-lg">$ ./contact.sh</p>
+                <div class="mt-4 max-w-lg">
+                    <div class="space-y-4">
+                        <div>
+                            <label for="name" class="block">> name:</label>
+                            <input type="text" id="name" class="w-full p-2 bg-black border border-green-400 text-green-400" placeholder="Enter your name">
+                        </div>
+                        <div>
+                            <label for="email" class="block">> email:</label>
+                            <input type="email" id="email" class="w-full p-2 bg-black border border-green-400 text-green-400" placeholder="Enter your email">
+                        </div>
+                        <div>
+                            <label for="message" class="block">> message:</label>
+                            <textarea id="message" class="w-full p-2 bg-black border border-green-400 text-green-400" rows="5" placeholder="Enter your message"></textarea>
+                        </div>
+                        <button class="bg-green-400 text-black p-2 font-semibold hover:bg-green-500 transition">> submit</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-      <div class="info">
-        <h1>I'm Ashish <span>Dhakal</span></h1>
-        <p>
-            Undergraduate computer science student(CS).
-          <br />
-          |HTML| |CSS|
-        </p>
-        <a href="#" class="btn">Download CV</a>
-      </div>
-
-      <div class="icons">
-        <a   target="_blank"  href="https://www.linkedin.com/in/ashishdhakal/"><i class="fab fa-linkedin-in"></i></a>
-        <a target="_blank" href="https://www.twitter.com/ashishdkl"><i class="fab fa-twitter"></i></a>
-        <a target="_blank" href="https://github.com/ashishdkl"><i class="fab fa-github"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-      </div>
-
-      <div class="images">
-        <img src="pattern.png" alt="" class="bg" />
-        <img src="photo.png" alt="" class="girl" />
-      </div>
-    </div>
-  </body>
+    <style>
+        body {
+            font-family: 'IBM Plex Mono', monospace;
+        }
+    </style>
+</body>
 </html>
