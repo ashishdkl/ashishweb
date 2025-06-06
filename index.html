@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ashish Dhakal </title>
+  <title>Ashish Dhakal - Terminal Resume</title>
   <style>
     :root {
       --ubuntu-bg: #2d1b2d; /* Dark Ubuntu purple background */
@@ -82,6 +82,7 @@
       left: 0;
       width: 100%;
       z-index: 1;
+      flex-wrap: wrap; /* Allow header content to wrap if needed */
     }
 
     .terminal-buttons span {
@@ -99,6 +100,7 @@
     .terminal-content {
       padding: clamp(30px, 6vw, 60px) clamp(10px, 2vw, 20px) clamp(10px, 2vw, 20px);
       min-height: 70vh;
+      word-wrap: break-word; /* Ensure text wraps to next line */
     }
 
     .prompt {
@@ -111,11 +113,13 @@
       opacity: 0;
       animation: typeWriter 2s forwards;
       animation-delay: calc(0.5s + var(--delay));
+      overflow-wrap: break-word; /* Break long words if needed */
     }
 
     h1, h2 {
       color: var(--ubuntu-orange);
       text-transform: uppercase;
+      word-wrap: break-word; /* Ensure headings wrap */
     }
 
     h1 {
@@ -144,6 +148,7 @@
       margin: clamp(5px, 1.5vw, 10px) 0;
       transition: transform 0.3s ease, color 0.3s ease;
       font-size: clamp(0.8em, 2.8vw, 1em);
+      overflow-wrap: break-word; /* Break long words */
     }
 
     li:hover {
@@ -153,6 +158,7 @@
 
     p {
       font-size: clamp(0.8em, 2.8vw, 1em);
+      overflow-wrap: break-word; /* Ensure paragraphs wrap */
     }
 
     @keyframes fadeIn {
@@ -190,6 +196,9 @@
       .binary-digit {
         font-size: clamp(1em, 2.5vw, 1.8em);
       }
+      ul {
+        padding-left: clamp(8px, 2vw, 15px);
+      }
     }
 
     @media (max-width: 480px) {
@@ -206,6 +215,12 @@
       .binary-digit {
         font-size: clamp(0.9em, 2.2vw, 1.5em);
       }
+      ul {
+        padding-left: clamp(6px, 1.8vw, 10px);
+      }
+      li::before {
+        margin-right: clamp(4px, 1vw, 8px);
+      }
     }
 
     @media (max-width: 360px) {
@@ -218,6 +233,12 @@
       }
       .binary-digit {
         font-size: clamp(0.8em, 2vw, 1.2em);
+      }
+      ul {
+        padding-left: clamp(5px, 1.5vw, 8px);
+      }
+      li, p {
+        font-size: clamp(0.7em, 2.5vw, 0.9em);
       }
     }
   </style>
@@ -244,7 +265,7 @@
           <li>Address: Bharatpur-18 Chitwan, Nepal</li>
           <li>Phone: +9779821284403</li>
           <li>Email: adgraphy2@gmail.com</li>
-          <li>Languages: Nepali-C2, English-C2, Hindi-C2</li>
+          <li>Languages: Nepali-C2, English-B1, Hindi-C2</li>
         </ul>
       </div>
       <div class="section" style="--delay: 1s;">
@@ -304,20 +325,18 @@
         digit.className = 'binary-digit';
         digit.textContent = Math.random() > 0.5 ? '1' : '0';
         digit.style.left = Math.random() * 100 + 'vw';
-        digit.style.animationDuration = Math.random() * 4 + 4 + 's'; // Slower range
+        digit.style.animationDuration = Math.random() * 4 + 4 + 's';
         digit.style.animationDelay = Math.random() * 5 + 's';
         binaryBg.appendChild(digit);
         setTimeout(() => digit.remove(), 8000);
       }
-      for (let i = 0; i < 50; i++) createBinary(); // More digits
-      setInterval(createBinary, 100); // Faster spawn
+      for (let i = 0; i < 50; i++) createBinary();
+      setInterval(createBinary, 100);
 
       // Section setup for typewriter effect
       const sections = document.querySelectorAll('.section');
       sections.forEach(section => {
-        section.style.width = '0';
         section.style.overflow = 'hidden';
-        section.style.whiteSpace = 'nowrap';
       });
 
       // Hover effect for terminal buttons
