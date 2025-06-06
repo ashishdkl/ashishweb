@@ -1,328 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashish Dhakal - Terminal Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ashish Dhakal - Terminal Resume</title>
+  <style>
+    :root {
+      --ubuntu-bg: #2d1b2d; /* Dark Ubuntu purple background */
+      --ubuntu-orange: #e95420; /* Ubuntu orange accent */
+      --ubuntu-text: #f4f4f4; /* Light text for readability */
+      --terminal-green: #00ff00; /* Classic terminal green */
+      --terminal-shadow: #772953; /* Aubergine shadow */
+      --font-mono: 'Ubuntu Mono', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--ubuntu-bg);
+      color: var(--ubuntu-text);
+      font-family: var(--font-mono);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .terminal-window {
+      width: 90%;
+      max-width: 900px;
+      margin: 20px auto;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 8px;
+      box-shadow: 0 0 20px var(--terminal-shadow);
+      padding: 20px;
+      position: relative;
+      animation: fadeIn 1s ease-in;
+    }
+
+    .terminal-header {
+      background: var(--ubuntu-orange);
+      padding: 10px;
+      border-radius: 8px 8px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1;
+    }
+
+    .terminal-buttons span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 8px;
+    }
+
+    .close { background: #ff5c5c; }
+    .minimize { background: #ffbd2e; }
+    .maximize { background: #27c93f; }
+
+    .terminal-content {
+      padding: 60px 20px 20px;
+      min-height: 500px;
+    }
+
+    .prompt {
+      color: var(--terminal-green);
+      animation: blink 1s infinite;
+    }
+
+    .section {
+      margin: 20px 0;
+      opacity: 0;
+      animation: typeWriter 2s forwards;
+      animation-delay: calc(0.5s + var(--delay));
+    }
+
+    h1, h2 {
+      color: var(--ubuntu-orange);
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      animation: slideIn 1s ease-out;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      border-bottom: 2px solid var(--terminal-green);
+      padding-bottom: 5px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 20px;
+    }
+
+    li::before {
+      content: "$ ";
+      color: var(--terminal-green);
+      margin-right: 10px;
+    }
+
+    li {
+      margin: 10px 0;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    li:hover {
+      transform: translateX(10px);
+      color: var(--ubuntu-orange);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(0); }
+    }
+
+    @keyframes typeWriter {
+      from { width: 0; opacity: 0; }
+      to { width: 100%; opacity: 1; }
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .terminal-window {
+        width: 95%;
+        margin: 10px auto;
+      }
+      h1 { font-size: 1.8em; }
+      h2 { font-size: 1.2em; }
+      .terminal-content { padding: 50px 10px 10px; }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 1.5em; }
+      h2 { font-size: 1em; }
+      li { font-size: 0.9em; }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
 </head>
-<body class="font-mono bg-gray-900 text-teal-500 overflow-x-hidden relative">
-    <!-- Binary Background Animation -->
-    <canvas id="binary" class="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none"></canvas>
+<body>
+  <div class="terminal-window">
+    <div class="terminal-header">
+      <div class="terminal-buttons">
+        <span class="close"></span>
+        <span class="minimize"></span>
+        <span class="maximize"></span>
+      </div>
+      <div>ashish@ubuntu:~/resume$</div>
+    </div>
+    <div class="terminal-content">
+      <div class="section" style="--delay: 0s;">
+        <h1><span class="prompt">></span> Ashish Dhakal</h1>
+      </div>
+      <div class="section" style="--delay: 0.5s;">
+        <h2>Contact</h2>
+        <ul>
+          <li>Address: Bharatpur-18 Chitwan, Nepal</li>
+          <li>Phone: +9779821284403</li>
+          <li>Email: adgraphy2@gmail.com</li>
+          <li>Languages: Nepali-C2, English-C2, Hindi-C2</li>
+        </ul>
+      </div>
+      <div class="section" style="--delay: 1s;">
+        <h2>Summary</h2>
+        <p>Skilled Laravel Developer with strong expertise in building dynamic web applications and a creative background in Graphics Design using Photoshop. Proficient in PHP, MySQL, and front-end technologies with additional experience in desktop programming and UI design.</p>
+      </div>
+      <div class="section" style="--delay: 1.5s;">
+        <h2>Skill Highlights</h2>
+        <ul>
+          <li>Laravel Development (advanced)</li>
+          <li>Graphics Design (Photoshop)</li>
+          <li>PHP (OOP)</li>
+          <li>Full-stack project experience</li>
+          <li>Quick learner and team collaborator</li>
+          <li>HTML5, CSS3, JavaScript</li>
+          <li>MySQL</li>
+          <li>Core Java, C, C++, VB.NET</li>
+          <li>UI/UX Fundamentals</li>
+          <li>Strong problem-solving skills</li>
+        </ul>
+      </div>
+      <div class="section" style="--delay: 2s;">
+        <h2>Experience</h2>
+        <ul>
+          <li>Full Stack Developer - Digital Pathshala, 2025</li>
+          <li>- Built full-stack web applications using Laravel, PHP, MySQL, HTML, CSS, and JavaScript</li>
+          <li>- Developed authentication, database handling, and responsive user interfaces</li>
+          <li>Graphics Designer - Blood Donor's Society Nepal, 2025</li>
+          <li>- Created banners, posters, and social media graphics with Adobe Photoshop</li>
+        </ul>
+      </div>
+      <div class="section" style="--delay: 2.5s;">
+        <h2>Academic Projects</h2>
+        <ul>
+          <li>Laravel Project (2025): Developed a web app with login, CRUD, and clean UI</li>
+          <li>Graphics Project (2024-2025): Designed UI and promotional materials using Photoshop</li>
+          <li>VB.NET Project (2023): Built a desktop application with database connectivity</li>
+          <li>C Project (2022): Created a console program demonstrating core logic skills</li>
+        </ul>
+      </div>
+      <div class="section" style="--delay: 3s;">
+        <h2>Education</h2>
+        <ul>
+          <li>Bachelor of Computer Application</li>
+          <li>Oxford College of Engineering and Management</li>
+          <li>2022 - Present</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Add dynamic typing effect and interactivity
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => {
+        section.style.width = '0';
+        section.style.overflow = 'hidden';
+        section.style.whiteSpace = 'nowrap';
+      });
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8 relative z-10">
-        <!-- Hero Section -->
-        <section id="home" class="mb-12 opacity-0 animate-fade-in">
-            <div class="border-l-4 border-teal-500 pl-4">
-                <p class="text-lg typing-effect" data-text="$ whoami"></p>
-                <p class="text-3xl font-bold mt-2 typing-effect-delayed" data-text="Ashish Dhakal"></p>
-                <p class="text-lg mt-1 typing-effect-delayed-2" data-text="Laravel Developer & Graphics Designer"></p>
-                <p class="text-sm mt-2 typing-effect-delayed-3" data-text="$ date"></p>
-                <p class="typing-effect-delayed-4" data-text="Fri Jun  6 22:15:00 +0545 2025"></p>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="mb-12 opacity-0 animate-slide-in-left bg-gray-800 p-4 rounded">
-            <div class="border-l-4 border-teal-500 pl-4">
-                <p class="text-lg typing-effect" data-text="$ cat skills.txt"></p>
-                <div class="mt-4">
-                    <p class="typing-effect-delayed">Laravel, C, C++, VB.NET, Graphics Design</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- What I Do Section -->
-        <section id="what-i-do" class="mb-12 opacity-0 animate-slide-in-right bg-gray-800 p-4 rounded">
-            <div class="border-l-4 border-teal-500 pl-4">
-                <p class="text-lg typing-effect" data-text="$ cat services.txt"></p>
-                <div class="mt-4 space-y-4">
-                    <div class="animate-pulse-once">
-                        <p class="font-bold">[1] Web Development</p>
-                        <p>Building robust web applications using Laravel and modern frameworks.</p>
-                    </div>
-                    <div class="animate-pulse-once-delayed">
-                        <p class="font-bold">[2] Software Development</p>
-                        <p>Creating applications with C, C++, and VB.NET for various needs.</p>
-                    </div>
-                    <div class="animate-pulse-once-delayed-2">
-                        <p class="font-bold">[3] Graphics Design</p>
-                        <p>Designing visually appealing graphics for websites and branding.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Portfolio Section -->
-        <section id="portfolio" class="mb-12 opacity-0 animate-slide-in-left bg-gray-800 p-4 rounded">
-            <div class="border-l-4 border-teal-500 pl-4">
-                <p class="text-lg typing-effect" data-text="$ ls projects/"></p>
-                <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="hover:animate-bounce hover:text-teal-400 transition-colors duration-300">
-                        <p class="font-bold">laravel_app</p>
-                        <p>Custom Laravel-based web application for a client.</p>
-                    </div>
-                    <div class="hover:animate-bounce hover:text-teal-400 transition-colors duration-300">
-                        <p class="font-bold">c_project</p>
-                        <p>Utility tool developed in C for system optimization.</p>
-                    </div>
-                    <div class="hover:animate-bounce hover:text-teal-400 transition-colors duration-300">
-                        <p class="font-bold">graphic_design</p>
-                        <p>Branding project with logos and promotional materials.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Blog Section -->
-        <section id="blog" class="mb-12 opacity-0 animate-slide-in-right bg-gray-800 p-4 rounded">
-            <div class="border-l-4 border-teal-500 pl-4">
-                <p class="text-lg typing-effect" data-text="$ cat blog.txt"></p>
-                <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="hover:animate-pulse hover:text-teal-400 transition-colors duration-300">
-                        <p class="font-bold">[2025-06-01] Laravel Best Practices</p>
-                        <p>Tips for optimizing Laravel applications.</p>
-                    </div>
-                    <div class="hover:animate-pulse hover:text-teal-400 transition-colors duration-300">
-                        <p class="font-bold">[2025-05-15] C Programming Basics</p>
-                        <p>Fundamentals of C for beginners.</p>
-                    </div>
-                    <div class="hover:animate-pulse hover:text-teal-400 transition-colors duration-300">
-                        <p class="font-bold">[2025-04-10] Design Trends 2025</p>
-                        <p>Latest trends in graphic design this year.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="mb-12 opacity-0 animate-slide-in-left bg-gray-800 p-4 rounded">
-            <div class="border-l-4 border-teal-500 pl-4">
-                <p class="text-lg typing-effect" data-text="$ ./contact.sh"></p>
-                <div class="mt-4 max-w-lg">
-                    <div class="space-y-4">
-                        <div>
-                            <label for="name" class="block animate-blink">> name:</label>
-                            <input type="text" id="name" class="w-full p-2 bg-gray-900 border border-teal-500 text-teal-500 hover:border-teal-400 focus:border-teal-400 transition-all duration-300 animate-glow">
-                        </div>
-                        <div>
-                            <label for="email" class="block animate-blink">> email:</label>
-                            <input type="email" id="email" class="w-full p-2 bg-gray-900 border border-teal-500 text-teal-500 hover:border-teal-400 focus:border-teal-400 transition-all duration-300 animate-glow">
-                        </div>
-                        <div>
-                            <label for="message" class="block animate-blink">> message:</label>
-                            <textarea id="message" class="w-full p-2 bg-gray-900 border border-teal-500 text-teal-500 hover:border-teal-400 focus:border-teal-400 transition-all duration-300 animate-glow" rows="5"></textarea>
-                        </div>
-                        <button class="bg-teal-500 text-black p-2 font-semibold hover:bg-teal-600 hover:scale-105 transition-all duration-300 animate-pulse-once">> submit</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <style>
-        body {
-            font-family: 'Ubuntu Mono', monospace;
-        }
-
-        /* Custom Teal Colors */
-        .text-teal-500 {
-            color: #00CED1;
-        }
-        .text-teal-400 {
-            color: #40E0D0;
-        }
-        .border-teal-500 {
-            border-color: #00CED1;
-        }
-        .border-teal-400 {
-            border-color: #40E0D0;
-        }
-        .bg-teal-500 {
-            background-color: #00CED1;
-        }
-        .bg-teal-600 {
-            background-color: #00B7B8;
-        }
-
-        /* Binary Background Animation */
-        #binary {
-            background: black;
-        }
-
-        /* Typing Effect */
-        .typing-effect::after, .typing-effect-delayed::after, .typing-effect-delayed-2::after, .typing-effect-delayed-3::after, .typing-effect-delayed-4::after {
-            content: "|";
-            animation: blink 0.7s infinite;
-        }
-
-        .typing-effect, .typing-effect-delayed, .typing-effect-delayed-2, .typing-effect-delayed-3, .typing-effect-delayed-4 {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 2px solid transparent;
-        }
-
-        .typing-effect {
-            animation: typing 2s steps(40, end) forwards;
-        }
-
-        .typing-effect-delayed {
-            animation: typing 2s steps(40, end) 2s forwards;
-        }
-
-        .typing-effect-delayed-2 {
-            animation: typing 2s steps(40, end) 4s forwards;
-        }
-
-        .typing-effect-delayed-3 {
-            animation: typing 2s steps(40, end) 6s forwards;
-        }
-
-        .typing-effect-delayed-4 {
-            animation: typing 2s steps(40, end) 8s forwards;
-        }
-
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-
-        /* Fade In Animation */
-        .animate-fade-in {
-            animation: fadeIn 1s ease-in forwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Slide In Animations */
-        .animate-slide-in-left {
-            animation: slideInLeft 1s ease-out forwards;
-        }
-
-        .animate-slide-in-right {
-            animation: slideInRight 1s ease-out forwards;
-        }
-
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-100px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(100px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        /* Pulse Animation */
-        .animate-pulse-once {
-            animation: pulse 1s ease-in-out;
-        }
-
-        .animate-pulse-once-delayed {
-            animation: pulse 1s ease-in-out 0.5s;
-        }
-
-        .animate-pulse-once-delayed-2 {
-            animation: pulse 1s ease-in-out 1s;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        /* Hover Bounce Animation */
-        .hover\:animate-bounce:hover {
-            animation: bounce 0.5s ease-in-out;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* Hover Pulse Animation */
-        .hover\:animate-pulse:hover {
-            animation: pulse 0.5s ease-in-out;
-        }
-
-        /* Blinking Label Animation for Contact Form */
-        .animate-blink::after {
-            content: "|";
-            animation: blink 0.7s infinite;
-            margin-left: 2px;
-        }
-
-        /* Glow Effect for Inputs */
-        .animate-glow {
-            animation: glow 2s infinite;
-        }
-
-        @keyframes glow {
-            0% { box-shadow: 0 0 5px #00CED1; }
-            50% { box-shadow: 0 0 15px #00CED1; }
-            100% { box-shadow: 0 0 5px #00CED1; }
-        }
-    </style>
-
-    <script>
-        // Dynamically set the text content for typing effect
-        document.querySelectorAll('[data-text]').forEach(element => {
-            element.textContent = element.getAttribute('data-text');
+      // Hover effect for terminal buttons
+      const buttons = document.querySelectorAll('.terminal-buttons span');
+      buttons.forEach(btn => {
+        btn.addEventListener('mouseover', () => {
+          btn.style.transform = 'scale(1.2)';
         });
-
-        // Binary Background Animation
-        const canvas = document.getElementById('binary');
-        const ctx = canvas.getContext('2d');
-
-        canvas.height = window.innerHeight;
-        canvas.width = window.innerWidth;
-
-        const chars = '01';
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-        const drops = [];
-
-        for (let x = 0; x < columns; x++) {
-            drops[x] = 1;
-        }
-
-        function draw() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            ctx.fillStyle = '#40E0D0';
-            ctx.font = fontSize + 'px monospace';
-
-            for (let i = 0; i < drops.length; i++) {
-                const text = chars.charAt(Math.floor(Math.random() * chars.length));
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
-        }
-
-        setInterval(draw, 50);
-
-        // Adjust canvas size on window resize
-        window.addEventListener('resize', () => {
-            canvas.height = window.innerHeight;
-            canvas.width = window.innerWidth;
+        btn.addEventListener('mouseout', () => {
+          btn.style.transform = 'scale(1)';
         });
-    </script>
+      });
+    });
+  </script>
 </body>
 </html>
